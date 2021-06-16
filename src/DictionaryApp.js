@@ -1,5 +1,6 @@
 import './DictionaryApp.css';
 import GitHubLink from "./GitHubLink";
+import DictionarySearchEngine from "./DictionarySearchEngine";
 
 function DictionaryApp() {
   return (
@@ -10,7 +11,7 @@ function DictionaryApp() {
       Dictionary App
       </header>
 
-      <button type="button" className="btn btn-primary">Primary</button>
+      <DictionarySearchEngine/>
 
       <GitHubLink/>
       </div>
