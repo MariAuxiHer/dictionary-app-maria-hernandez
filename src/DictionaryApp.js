@@ -11,7 +11,7 @@ function DictionaryApp() {
       Dictionary App
       </header>
 
-      <DictionarySearchEngine/>
+      <DictionarySearchEngine word={"hello"}/>
 
       <GitHubLink/>
       </div>

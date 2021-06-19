@@ -1,7 +1,10 @@
 import React, {useState} from "react";
+import axios from "axios";
 
-export default function DictionarySearchEngine(){
-    let [word, setWord] = useState("");
+export default function DictionarySearchEngine(props){
+  let [loaded, setLoaded] = useState(false);
+    let [word, setWord] = useState(props.word);
+    let [information, setInformation] = useState({});
 
     /*<form id="submit-word" onSubmit={handleSubmit}>
     <input
@@ -27,15 +30,31 @@ export default function DictionarySearchEngine(){
    <i className="fa fa-arrow-circle-right fa-lg" onClick={hello}></i>  
    */
 
-   function updateWord(event) {
+  function searchWordInfo (response){
+    console.log(response);
+    console.log(response.data[0]);
+    console.log(response.data[0].word);
+    console.log(response.data[0].phonetics);
+    console.log(response.data[0].meanings);
+  }
+
+
+  function searchWord(){
+    let ApiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`;
+    axios.get(ApiUrl).then(searchWordInfo);
+  }
+
+  function callAPI(event){
+    event.preventDefault();
+    searchWord();
+  }
+
+  function updateWord(event) {
     event.preventDefault();
     setWord(event.target.value);
   }
 
-  function hello(event){
-    event.preventDefault();
-      alert(`The word is ${word}`);
-  }
+  if (loaded){
     return (
     <div>
         <div className="row">
@@ -56,11 +75,21 @@ export default function DictionarySearchEngine(){
           </form>
         </div>
         <div className="col-1">
-        <button type="submit" className="btn btn-success" onClick={hello} >
+        <button type="submit" className="btn btn-success" onClick={callAPI} >
     <i className="fa fa-arrow-circle-right fa-lg"></i> Next
 </button>
         </div>
     </div>
     </div>
     )
+}
+
+
+else {
+  searchWord();
+return(
+  ""
+)
+}
+
 }
