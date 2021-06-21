@@ -4,7 +4,7 @@ import axios from "axios";
 export default function DictionarySearchEngine(props){
   let [loaded, setLoaded] = useState(false);
     let [word, setWord] = useState(props.word);
-    let [information, setInformation] = useState({});
+    let [info, setInfo] = useState(null);
 
     /*<form id="submit-word" onSubmit={handleSubmit}>
     <input
@@ -33,9 +33,11 @@ export default function DictionarySearchEngine(props){
   function searchWordInfo (response){
     console.log(response);
     console.log(response.data[0]);
-    console.log(response.data[0].word);
+    setInfo(response.data[0]);
+    /*console.log(response.data[0].word); //**** 
     console.log(response.data[0].phonetics);
-    console.log(response.data[0].meanings);
+    console.log(response.data[0].meanings);*/
+    setLoaded(true);
   }
 
 
@@ -63,7 +65,7 @@ export default function DictionarySearchEngine(props){
         </div>
 
         <div className="col-10">
-          <form id="submit-word">
+          <form id="submit-word" onSubmit={callAPI}>
             <input
               type="search"
               placeholder="Type a Word"
@@ -72,13 +74,26 @@ export default function DictionarySearchEngine(props){
               autoFocus="on"
               onChange={updateWord}
             />
+             <input
+              type="submit"
+              value="Search"
+            />
           </form>
         </div>
-        <div className="col-1">
-        <button type="submit" className="btn btn-success" onClick={callAPI} >
-    <i className="fa fa-arrow-circle-right fa-lg"></i> Next
-</button>
-        </div>
+  <div>
+{info.word}
+  </div>
+
+  <div>
+  {info.phonetics.map(function (infoitem, index) {
+            return (
+              <div key={index}>
+              {infoitem.text}
+              </div>
+              
+              )})}
+  </div>
+
     </div>
     </div>
     )
