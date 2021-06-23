@@ -28,6 +28,24 @@ export default function DictionarySearchEngine(props){
 
    <input type="submit" value="Search" id="search-button" />
    <i className="fa fa-arrow-circle-right fa-lg" onClick={hello}></i>  
+
+
+   {infoDefinitionsItem.synonyms.map(function (infoSynonymItem, index){
+              return(
+                <div key={index}>
+              {infoSynonymItem}
+              </div>
+              )})}
+
+               <div>
+              {infoDefinitionsItem.synonyms.map(function (infoSynonymItem, index){
+              return(
+                <div key={index}>
+              {infoSynonymItem}
+              </div>
+              )})}
+              </div>
+
    */
 
   function searchWordInfo (response){
@@ -85,12 +103,48 @@ export default function DictionarySearchEngine(props){
   </div>
 
   <div>
-  {info.phonetics.map(function (infoitem, index) {
+  {info.phonetics.map(function (infoPhoneticItem, index) {
             return (
               <div key={index}>
-              {infoitem.text}
+              {infoPhoneticItem.text}
+              <br />
               </div>
               
+              )})}
+  </div>
+
+  <br />
+  <br /> 
+  <br />
+  <br /> 
+
+  <div className="row" id="detailed-information">
+  {info.meanings.map(function (infoItem, index) {
+            return (
+              <div className="col-xl-12 col-lg-12 col-md-12 col-12" key={index}>
+              <div>
+              {infoItem.partOfSpeech}
+              </div>
+              <br />
+              <div>
+              {infoItem.definitions.map(function (infoDefinitionsItem, index) {
+            return (
+              <div className="col-xl-12 col-lg-12 col-md-12 col-12" key={index}>
+              <div>
+              {infoDefinitionsItem.definition}
+              </div>
+
+
+              <div>
+              {infoDefinitionsItem.example}
+              </div>
+
+              </div>
+              )})}
+              
+              </div>
+
+              </div>
               )})}
   </div>
 
