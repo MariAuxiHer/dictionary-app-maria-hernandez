@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import Synonyms from "./Synonyms";
 
 export default function DictionarySearchEngine(props){
   let [loaded, setLoaded] = useState(false);
@@ -46,6 +47,26 @@ export default function DictionarySearchEngine(props){
               )})}
               </div>
 
+              //problems: 1. Not every "definitions" have synonyms... 2. Those that have synonyms are arrays, not simple text so the sole {infoSynonymItem} won't do anything. 
+              
+              {
+                if ("hola"=== "hola") {
+                return(
+                  <div>
+                  </div>
+                )
+                }
+
+                else {
+                return(
+                  <div>
+                  </div>
+                )
+
+              }}
+              
+              I may need to use a For Loop for this one... Try again with the map function, try to detect some problem, and if I cannot find anything try with for.. If I'm unsuccesful, chech SheCodes Video about it 
+
    */
 
   function searchWordInfo (response){
@@ -62,6 +83,7 @@ export default function DictionarySearchEngine(props){
   function searchWord(){
     let ApiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`;
     axios.get(ApiUrl).then(searchWordInfo);
+    console.log(ApiUrl);
   }
 
   function callAPI(event){
@@ -131,19 +153,22 @@ export default function DictionarySearchEngine(props){
             return (
               <div className="col-xl-12 col-lg-12 col-md-12 col-12" key={index}>
               <div>
-              {infoDefinitionsItem.definition}
+              <strong>Definition:</strong> {infoDefinitionsItem.definition}
               </div>
 
+              <div>
+             <Synonyms synonyms ={infoDefinitionsItem.synonyms}/>
+              </div>
 
               <div>
-              {infoDefinitionsItem.example}
+              <strong>Examples:</strong> "{infoDefinitionsItem.example}"
               </div>
 
               </div>
               )})}
               
               </div>
-
+              <br />
               </div>
               )})}
   </div>
