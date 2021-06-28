@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import Synonyms from "./Synonyms";
+import Phonetics from "./Phonetics";
 
 export default function DictionarySearchEngine(props){
   let [loaded, setLoaded] = useState(false);
@@ -67,7 +68,50 @@ export default function DictionarySearchEngine(props){
               
               I may need to use a For Loop for this one... Try again with the map function, try to detect some problem, and if I cannot find anything try with for.. If I'm unsuccesful, chech SheCodes Video about it 
 
+              {
+    function playAudio(event) {
+        event.preventDefault();
+        let audio = new Audio(props.phonetic.audio);
+
+        audio.play();
+    }
+    
+    return (
+        <div className="Phonetics">
+            <span className="playButton" onClick={handleClick}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-play-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                </svg>
+            </span>
+            <span className="transcription">{props.phonetic.text}</span>
+        </div>
+    )
+}
+
+<div className="col-xl-6 col-lg-6 col-md-6 col-6">
+
+<audio controls>
+<source src={infoPhoneticItem.audio} type="audio/mp3"/>
+</audio>
+
+<a href={infoPhoneticItem.audio}>
+<i className="fas fa-city"></i>
+</a>
+
+<audio id="player" src={infoPhoneticItem.audio}></audio>
+    <div>
+         <a href="/" onclick={playAudio}><i class='fa fa-volume-up fa-2x'></i></a>
+     </div>
+
+</div>
+
+<div className="col-xl-6 col-lg-6 col-md-6 col-6">
+              {infoPhoneticItem.text}
+              </div>
+             
    */
+
 
   function searchWordInfo (response){
     console.log(response);
@@ -124,16 +168,15 @@ export default function DictionarySearchEngine(props){
 {info.word}
   </div>
 
-  <div>
+   <div className="col-xl-6 col-lg-6 col-md-6 col-6">
   {info.phonetics.map(function (infoPhoneticItem, index) {
             return (
-              <div key={index}>
-              {infoPhoneticItem.text}
-              <br />
+              <div  key={index}>
+<Phonetics phonetic={infoPhoneticItem.audio}/>
               </div>
-              
               )})}
-  </div>
+          </div>      
+ 
 
   <br />
   <br /> 
