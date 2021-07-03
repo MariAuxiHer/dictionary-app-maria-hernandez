@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import axios from "axios";
-import Synonyms from "./Synonyms";
 import Phonetics from "./Phonetics";
+import Definitions from "./Definitions";
+import  "./DictionarySearchEngine.css";
 
 export default function DictionarySearchEngine(props){
   let [loaded, setLoaded] = useState(false);
@@ -109,6 +110,38 @@ export default function DictionarySearchEngine(props){
 <div className="col-xl-6 col-lg-6 col-md-6 col-6">
               {infoPhoneticItem.text}
               </div>
+
+               <audio id="myAudio">
+            <source src={props.phonetic} type="audio/mp3"/>
+            </audio>
+
+         <a href={"/"}><i class='fa fa-volume-up fa-2x' onclick={playAudio}></i></a>
+
+          <div>
+              {infoItem.partOfSpeech}
+              </div>
+              <br />
+              <div>
+              {infoItem.definitions.map(function (infoDefinitionsItem, index) {
+            return (
+              <div className="col-xl-12 col-lg-12 col-md-12 col-12" key={index}>
+              <div>
+              <strong>Definition:</strong> {infoDefinitionsItem.definition}
+              </div>
+
+              <div>
+             <Synonyms synonyms ={infoDefinitionsItem.synonyms}/>
+              </div>
+
+              <div>
+              <strong>Examples:</strong> "{infoDefinitionsItem.example}"
+              </div>
+
+              </div>
+              )})}
+              
+              </div>
+              <br />
              
    */
 
@@ -143,9 +176,9 @@ export default function DictionarySearchEngine(props){
   if (loaded){
     return (
     <div>
-        <div className="row">
+        <div className="row" id="searchForm">
         <div className="col-1">
-          <i className="fas fa-city"></i>
+        <i className="fas fa-book"></i>
         </div>
 
         <div className="col-10">
@@ -164,59 +197,36 @@ export default function DictionarySearchEngine(props){
             />
           </form>
         </div>
-  <div>
-{info.word}
-  </div>
+        </div>
 
-   <div className="col-xl-6 col-lg-6 col-md-6 col-6">
-  {info.phonetics.map(function (infoPhoneticItem, index) {
+    
+  <div className="wordAndPhonetics">   
+  
+{info.word}
+  <br/>
+  <br/>
+
+
+{info.phonetics.map(function (infoPhoneticItem, index) {
             return (
-              <div  key={index}>
-<Phonetics phonetic={infoPhoneticItem.audio}/>
+              <div key={index}>
+<Phonetics phonetic={infoPhoneticItem}/>
               </div>
               )})}
-          </div>      
  
+  </div>           
 
-  <br />
-  <br /> 
-  <br />
-  <br /> 
 
-  <div className="row" id="detailed-information">
+  <div>
   {info.meanings.map(function (infoItem, index) {
             return (
-              <div className="col-xl-12 col-lg-12 col-md-12 col-12" key={index}>
-              <div>
-              {infoItem.partOfSpeech}
-              </div>
-              <br />
-              <div>
-              {infoItem.definitions.map(function (infoDefinitionsItem, index) {
-            return (
-              <div className="col-xl-12 col-lg-12 col-md-12 col-12" key={index}>
-              <div>
-              <strong>Definition:</strong> {infoDefinitionsItem.definition}
-              </div>
-
-              <div>
-             <Synonyms synonyms ={infoDefinitionsItem.synonyms}/>
-              </div>
-
-              <div>
-              <strong>Examples:</strong> "{infoDefinitionsItem.example}"
-              </div>
-
-              </div>
-              )})}
-              
-              </div>
-              <br />
+              <div key={index}>
+                <Definitions info={infoItem}/>
               </div>
               )})}
   </div>
 
-    </div>
+
     </div>
     )
 }

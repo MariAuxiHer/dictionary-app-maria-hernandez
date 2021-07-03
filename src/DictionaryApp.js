@@ -2,6 +2,7 @@ import './DictionaryApp.css';
 import GitHubLink from "./GitHubLink";
 import DictionarySearchEngine from "./DictionarySearchEngine";
 
+
 function DictionaryApp() {
   return (
     <div className="container">
@@ -11,7 +12,9 @@ function DictionaryApp() {
       Dictionary App
       </header>
 
+      <div className="dictionaryBody">
       <DictionarySearchEngine word={"hello"}/>
+      </div>
 
       <GitHubLink/>
       </div>
