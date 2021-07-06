@@ -177,7 +177,7 @@ export default function DictionarySearchEngine(props){
     return (
     <div>
         <div className="row" id="searchForm">
-        <div className="col-1">
+        <div className="col-2">
         <i className="fas fa-book"></i>
         </div>
 
@@ -202,10 +202,10 @@ export default function DictionarySearchEngine(props){
     
   <div className="wordAndPhonetics">   
   
+<span className="searchedWord">
 {info.word}
+</span> 
   <br/>
-  <br/>
-
 
 {info.phonetics.map(function (infoPhoneticItem, index) {
             return (
@@ -215,7 +215,6 @@ export default function DictionarySearchEngine(props){
               )})}
  
   </div>           
-
 
   <div>
   {info.meanings.map(function (infoItem, index) {

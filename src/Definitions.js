@@ -6,21 +6,21 @@ export default function Definitions(props){
     return(
         <div className="detailedInformation">
             <div>
-              {props.info.partOfSpeech}
+              <span className="partOfSpeech">{props.info.partOfSpeech}</span>
               </div>
               <br />
-              <div>
+              <div className="definitions">
               {props.info.definitions.map(function (infoDefinitionsItem, index) {
             return (
               <div key={index}>
               <div>
               <strong>Definition:</strong> {infoDefinitionsItem.definition}
               </div>
-
+              <br />
               <div>
              <Synonyms synonyms ={infoDefinitionsItem.synonyms}/>
               </div>
-
+             
               <div>
               <strong>Examples:</strong> "{infoDefinitionsItem.example}"
               </div>
@@ -29,7 +29,7 @@ export default function Definitions(props){
               )})}
               
               </div>
-              <br />
+              
         </div>
     )
 }

@@ -1,9 +1,10 @@
 import React from "react";
+import "./GitHubLink.css";
 
 export default function GitHubLink(){
 
 return(
-    <span id="link-github">
+    <span className="link-github">
         {" "}
         <a
           href="https://github.com/MariAuxiHer/dictionary-app-maria-hernandez"

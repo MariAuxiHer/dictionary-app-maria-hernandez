@@ -1,4 +1,10 @@
 .DictionaryApp {
     margin: 3%;
+    font-family: 'Playfair Display', serif;
+}
 
+.App-header{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 45px;
 }
