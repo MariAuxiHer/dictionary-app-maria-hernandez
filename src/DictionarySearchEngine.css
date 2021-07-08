@@ -36,3 +36,13 @@ input[type=search] {
     text-transform: capitalize;
   }
 
+  .photosSection{
+    border: 5px solid red;
+    margin: 0% 5% 2% 5%;
+    padding: 1.5%;
+    padding-bottom: 0%;
+  }
+
+  .photosSection .col-4{
+    padding: 0% 1%;
+  }

@@ -2,12 +2,14 @@ import React, {useState} from "react";
 import axios from "axios";
 import Phonetics from "./Phonetics";
 import Definitions from "./Definitions";
+import Photos from "./Photos";
 import  "./DictionarySearchEngine.css";
 
 export default function DictionarySearchEngine(props){
   let [loaded, setLoaded] = useState(false);
     let [word, setWord] = useState(props.word);
     let [info, setInfo] = useState(null);
+    let [photo, setPhoto] = useState(null);
 
     /*<form id="submit-word" onSubmit={handleSubmit}>
     <input
@@ -142,25 +144,60 @@ export default function DictionarySearchEngine(props){
               
               </div>
               <br />
+
+
+                <div className="row">
+  {
+  photo.map(function (photoItem, index){
+    return(
+      <div className="col-4" key={index}>
+        <Photos photo={photoItem}/>
+      </div>
+    )
+  })
+}
+</div>
+
              
    */
 
 
+             
   function searchWordInfo (response){
     console.log(response);
-    console.log(response.data[0]);
+    console.log(response.data[0].word);
     setInfo(response.data[0]);
+    
     /*console.log(response.data[0].word); //**** 
     console.log(response.data[0].phonetics);
     console.log(response.data[0].meanings);*/
-    setLoaded(true);
+
+    //let keyApiPexels = "563492ad6f91700001000001ea1bf893d00941b48ab07d530c49812f";
+
+    let keyApiPexels = "563492ad6f917000010000010197e68003ac45a0a5e4e43c92264c9f";
+    let urlPexels = `https://api.pexels.com/v1/search?query=${response.data[0].word}&per_page=6`;
+    axios.get(urlPexels, 
+    { headers: {"Authorization" : `Bearer ${keyApiPexels}`}}).then(searchPhotos);
+
+   
   }
+
+  function searchPhotos(response){
+    setPhoto(response.data.photos);
+     setLoaded(true);
+  }
+
 
 
   function searchWord(){
     let ApiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`;
     axios.get(ApiUrl).then(searchWordInfo);
     console.log(ApiUrl);
+
+    //let keyApiPexels = "563492ad6f91700001000001ea1bf893d00941b48ab07d530c49812f";
+    //let urlPexels = `https://api.pexels.com/v1/search?query=${word}&per_page=6`;
+    //axios.get(urlPexels, 
+    //{ headers: {"Authorization" : `Bearer ${keyApiPexels}`}}).then(searchPhotos);
   }
 
   function callAPI(event){
@@ -172,6 +209,12 @@ export default function DictionarySearchEngine(props){
     event.preventDefault();
     setWord(event.target.value);
   }
+
+ /* function load(){
+    searchWord();
+    setLoaded(true);
+  }*/
+
 
   if (loaded){
     return (
@@ -225,6 +268,19 @@ export default function DictionarySearchEngine(props){
               )})}
   </div>
 
+<div className="photosSection">
+  <div className="row">
+  {
+  photo.map(function (photoItem, index){
+    return(
+      <div className="col-4" key={index}>
+        <Photos photo={photoItem}/>
+      </div>
+    )
+  })
+}
+</div>
+</div>
 
     </div>
     )
