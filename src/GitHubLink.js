@@ -10,6 +10,7 @@ return(
           href="https://github.com/MariAuxiHer/dictionary-app-maria-hernandez"
           rel="noreferrer"
           target="_blank"
+          className="link"
         >
           Open source-code
         </a>{" "}

@@ -173,8 +173,9 @@ export default function DictionarySearchEngine(props){
     console.log(response.data[0].meanings);*/
 
     //let keyApiPexels = "563492ad6f91700001000001ea1bf893d00941b48ab07d530c49812f";
-
-    let keyApiPexels = "563492ad6f917000010000010197e68003ac45a0a5e4e43c92264c9f";
+    //let keyApiPexels = "563492ad6f917000010000010197e68003ac45a0a5e4e43c92264c9f";
+    //let keyApiPexels = "563492ad6f917000010000012bfd4b83c3d04cf1a554822f164a8abd";
+    let keyApiPexels = "563492ad6f91700001000001746a4e3b0bae445487bd377d8861773a";
     let urlPexels = `https://api.pexels.com/v1/search?query=${response.data[0].word}&per_page=6`;
     axios.get(urlPexels, 
     { headers: {"Authorization" : `Bearer ${keyApiPexels}`}}).then(searchPhotos);
@@ -220,11 +221,11 @@ export default function DictionarySearchEngine(props){
     return (
     <div>
         <div className="row" id="searchForm">
-        <div className="col-2">
+        <div className="col-1">
         <i className="fas fa-book"></i>
         </div>
 
-        <div className="col-10">
+        <div className="col-11">
           <form id="submit-word" onSubmit={callAPI}>
             <input
               type="search"

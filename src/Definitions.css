@@ -1,15 +1,19 @@
 .detailedInformation{
-    border: 5px solid red;
+    /*border: 5px solid red;*/
+    border-radius: 10px;
     margin: 2% 5%;
     padding: 1.5%;
+    background: #FFEEFA;
+    color: #AA486E;
 }
 
 .partOfSpeech{
     font-family: 'Playfair Display', serif;
-    font-size: 30px;
+    font-size: 40px;
     text-transform: capitalize;
+    color: #DA86A5;
 }
 
 .definitions{
-    font-size: 20px;
+    font-size: 25px;
 }

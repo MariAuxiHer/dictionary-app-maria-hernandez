@@ -5,8 +5,8 @@ import DictionarySearchEngine from "./DictionarySearchEngine";
 
 function DictionaryApp() {
   return (
+    <div className="outerBorder">
     <div className="container">
-    <div className="DictionaryApp">
     
       <header className="App-header">
       Dictionary App
