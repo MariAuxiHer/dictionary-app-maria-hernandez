@@ -8,7 +8,7 @@ export default function Photos(props){
     if(props.photo){
     return(
         <span>
-<img src={props.photo.src.landscape} alt="wordPhoto" className="photosColumns"/>
+<img src={props.photo.src.landscape} alt="wordPhoto" className="photoColumns"/>
         </span>
             )}
 

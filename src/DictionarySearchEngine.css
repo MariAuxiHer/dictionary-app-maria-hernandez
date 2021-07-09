@@ -10,7 +10,7 @@
 
 
 .fa-book{
-    font-size: 270%;
+    font-size: 2.5vw;
     color:#DA86A5;
     margin-left: 20%;
     margin-top: 1%;
@@ -75,4 +75,36 @@ input[type=search] {
 
   .photosSection .col-4{
     padding: 0% 1%;
+  }
+
+  @media(max-width:986px){
+    .searchedWord{
+      font-family: 'Playfair Display', serif;
+      font-size: 4.3vw;
+      text-transform: capitalize;
+      color: #DA86A5;
+    }
+
+    .fa-book{
+      font-size: 2.5vw;
+      color:#DA86A5;
+      margin-left: 20%;
+      margin-top: 2%;
+  }
+}
+  @media(max-width:556px) {
+    /* For mobile phones: */
+    .searchedWord{
+      font-family: 'Playfair Display', serif;
+      font-size: 4.3vw;
+      text-transform: capitalize;
+      color: #DA86A5;
+    }
+
+    .fa-book{
+      font-size: 4vw;
+      color:#DA86A5;
+      margin-left: 20%;
+      margin-top: 2%;
+  }
   }

@@ -1,3 +1,24 @@
 .phonetics-button-and-text{
     font-size: 20px;
 }
+
+@media(max-width:986px){
+    .phonetics-button-and-text{
+        font-size: 2.8vw;
+    }
+    svg{
+        width: 2.8vw;
+        height: 2.8vw;
+    }
+}
+  @media(max-width:556px) {
+    /* For mobile phones: */
+    .phonetics-button-and-text{
+        font-size: 2.8vw;
+    }
+
+    svg{
+        width: 2.8vw;
+        height: 2.8vw;
+        }
+  }

@@ -17,3 +17,31 @@
 .definitions{
     font-size: 25px;
 }
+
+
+@media(max-width:986px){
+    .partOfSpeech{
+        font-family: 'Playfair Display', serif;
+        font-size: 4.2vw;
+        text-transform: capitalize;
+        color: #DA86A5;
+    }
+    
+    .definitions{
+        font-size: 2.8vw;
+    }
+  }
+
+  @media(max-width:556px) {
+    /* For mobile phones: */
+    .partOfSpeech{
+        font-family: 'Playfair Display', serif;
+        font-size: 4.2vw;
+        text-transform: capitalize;
+        color: #DA86A5;
+    }
+    
+    .definitions{
+        font-size: 2.8vw;
+    }
+  }
